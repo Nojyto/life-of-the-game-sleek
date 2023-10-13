@@ -9,7 +9,7 @@ var screenHeight = window.innerHeight || document.documentElement.clientHeight |
 
 const CELL_SIZE = Math.floor(Math.min(screenWidth, screenHeight)/60);
 const WIDTH = closestNumber(Math.floor(screenWidth * 0.9), CELL_SIZE) + 1;
-const HEIGHT = closestNumber(Math.floor(screenHeight * 0.7), CELL_SIZE) + 1;
+const HEIGHT = closestNumber(Math.floor(screenHeight * 0.75), CELL_SIZE) + 1;
 
 function closestNumber(n, m) {
     let q = Math.floor(n / m);
@@ -197,7 +197,7 @@ class Game extends React.Component {
                     ))}
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                    <section className="flex items-center justify-center mt-6">
+                    <section className="flex items-center justify-center mt-4">
                         {isRunning ?
                             <button onClick={this.stopGame}>
                                 <PauseIcon></PauseIcon>
@@ -219,26 +219,15 @@ class Game extends React.Component {
                             Clear
                         </button>
                     </section>
-                    <section className="flex items-center justify-center mt-6">
-                        <span className="flex flex-col w-32 mr-6">
-                            <label>Speed {interval}msec</label>
+                    <section className="flex items-center justify-center mt-4">
+                        <span className="flex flex-col w-32">
+                            <span>Speed {interval}msec</span>
                             <input type="range"
                                 min={0}
                                 max={1000}
                                 value={interval}
                                 onChange={this.handleIntervalChange}
                                 step={100}
-                            />
-                        </span>
-
-                        <span className="flex flex-col w-32">
-                            <label>Cell size</label>
-                            <input type="range"
-                                min={50}
-                                max={500}
-                                value={CELL_SIZE}
-                                onChange={v => CELL_SIZE = v}
-                                step={50}
                             />
                         </span>
                         
